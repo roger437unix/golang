@@ -1,0 +1,82 @@
+1. Criar projeto em Go
+go mod init projeto-fiber
+
+2. Instalar framework fiber
+go get github.com/gofiber/fiber/v2
+
+3. Adicionar módulos e requerimentos
+go mod tidy
+
+------------------------------------
+
+4. Instalar o Gorm para conexão com o MySQL
+go get -u gorm.io/gorm
+
+5. Instalar o driver para o MySQL
+go get -u gorm.io/driver/mysql
+
+------------------------------------
+
+5. Criar container com banco de dados MySQL
+
+docker run -d --rm --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mysql -e MYSQL_DATABASE=db_loja -e MYSQL_USER=tux -e MYSQL_PASSWORD=ABC123xyz mysql
+
+mysql -utux -p -h 127.0.0.1 db_loja
+
+------------------------------------
+
+6. Criar diretórios e arquivos do projeto
+
+mkdir database routes controllers
+touch database/connect.go
+touch routes/routes.go
+touch controllers/authController.go
+
+7. Editar os arquivos
+
+------------------------------------
+
+8. Criar nova branch
+
+fiber-project6-mysql ➤ git branch                                                                                                                                                                        git:main*
+
+
+fiber-project6-mysql ➤ git checkout -b fiber-project6-struct                                                                                                                                             git:main*
+Switched to a new branch 'fiber-project6-struct'
+
+fiber-project6-mysql ➤ git branch
+* fiber-project6-struct
+  main
+
+
+fiber-project6-mysql ➤ git checkout main                                                                                                                                                git:fiber-project6-struct*
+M       fiber/fiber-project5-mysql/main.go
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+
+fiber-project6-mysql ➤ git merge fiber-project6-struct                                                                                                                                                   git:main*
+Already up to date.
+
+
+
+------------------------------------
+
+9. Criar novos diretórios e arquivos do projeto
+
+mkdir models && touch models/user.go
+
+------------------------------------
+
+10. ☁️ Air - Live reload for Go apps
+
+https://github.com/air-verse/air
+
+go install github.com/air-verse/air@latest
+
+~/go/bin/air
+
+sudo ln -s ~/go/bin/air /usr/local/bin/air
+
+------------------------------------
+
