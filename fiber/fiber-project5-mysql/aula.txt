@@ -1,0 +1,35 @@
+1. Criar projeto em Go
+go mod init projeto-fiber
+
+2. Instalar framework fiber
+go get github.com/gofiber/fiber/v2
+
+3. Adicionar módulos e requerimentos
+go mod tidy
+
+------------------------------------
+
+4. Instalar o Gorm para conexão com o MySQL
+go get -u gorm.io/gorm
+
+5. Instalar o driver para o MySQL
+go get -u gorm.io/driver/mysql
+
+------------------------------------
+
+5. Criar container com banco de dados MySQL
+
+docker run -d --rm --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mysql -e MYSQL_DATABASE=db_loja -e MYSQL_USER=tux -e MYSQL_PASSWORD=ABC123xyz mysql
+
+mysql -utux -p -h 127.0.0.1 db_loja
+
+------------------------------------
+
+6. Criar diretórios e arquivos do projeto
+
+mkdir database routes controllers
+touch database/connect.go
+touch routes/routes.go
+touch controllers/authController.go
+
+7. Editar os arquivos
