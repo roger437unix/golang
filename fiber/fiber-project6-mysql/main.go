@@ -1,5 +1,6 @@
 /* Adicionando Struct */
 /* Air - Live reload for Go apps */
+
 package main
 
 import (
