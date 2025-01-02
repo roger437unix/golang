@@ -1,4 +1,4 @@
-/* Alterando a função conexão para retornar dois argumentos */
+/* Organizando todo o projeto em diretórios */
 
 package main
 
