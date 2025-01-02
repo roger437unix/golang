@@ -1,0 +1,9 @@
+1. Criar projeto em Go
+go mod init projeto-fiber
+
+2. Instalar framework fiber
+go get github.com/gofiber/fiber/v2
+
+2. Adicionar módulos e requerimentos
+go mod tidy
+

@@ -1,0 +1,17 @@
+
+1. Instalar extensão do Go no VSCode
+
+2. Inicializar o projeto em Go
+go mod init go-api
+
+3. Criar diretório de trabalho em arquivo fonte
+mkdir cmd
+touch cmd/main.go
+
+4. Download do framework web Gin
+go get github.com/gin-gonic/gin
+
+5. Após código criado, para executar
+go run cmd/main.go
+
+curl localhost:8000/ping && echo

@@ -1,0 +1,127 @@
+
+1. Instalar extensão do Go no VSCode
+
+2. Inicializar o projeto em Go
+go mod init go-api
+
+3. Criar diretório de trabalho em arquivo fonte
+mkdir cmd
+touch cmd/main.go
+
+4. Download do framework web Gin
+go get github.com/gin-gonic/gin
+
+5. Após código criado, para executar
+go run cmd/main.go
+
+curl localhost:8000/ping && echo
+
+
+----------------------------------------------
+
+6. Criar container com banco de dados PostgreSQL
+Obs.: Na raiz do projeto
+
+touch docker-compose.yaml
+
+psql -Utux -W -h 127.0.0.1 db_loja
+
+db_loja-# \du
+db_loja-# \l
+db_loja-# \dt
+
+db_loja=# CREATE TABLE product (
+id SERIAL PRIMARY KEY,
+product_name VARCHAR(50) NOT NULL,
+price NUMERIC(10, 2) NOT NULL );
+
+db_loja=# \dt
+
+db_loja=# INSERT INTO product (product_name, price) VALUES ('Tênis Salomon', 1200);
+db_loja=# INSERT INTO product (product_name, price) VALUES ('Tênis Adidas', 800);
+
+db_loja=# SELECT * FROM product;
+
+----------------------------------------------
+
+* Consumir os dados do banco
+* Criar rota para consultar produtos
+
+7. Criar um model contendo uma struct de acordo com o esquema do banco
+
+mkdir model                                                                                                                                            git:main*
+touch model/product.go 
+
+package model
+
+type Product struct {
+	ID    int     `json:"id_product"`
+	Name  string  `json:"name"`
+	Price float64 `json:"price"`
+}
+
+
+8. Criar um controller que irá receber a requisição e retornar a resposta
+
+mkdir controller                                                                                                                                       git:main*
+touch controller/product_controller.go
+
+<Código em controller/product_controller.go>
+
+
+9. Mapear a rota de GetProducts na função main()
+
+<Código em cmd/main.go>
+
+
+10. Após código criado, para executar
+go run cmd/main.go
+
+curl localhost:8000/products && echo
+
+----------------------------------------------
+
+* Criar camada de usecase
+
+mkdir usecase                                                                                                                                          git:main*
+touch usecase/product_usecase.go 
+
+<Código em usecase/product_usecase.go>
+
+=> Atualizar controller/product_controller.go
+
+----------------------------------------------
+
+* Criar conexão com banco de dados
+
+mkdir db                                                                                                                                               git:main*
+touch db/conn.go
+
+<Código em db/conn.go>
+
+=> Atualizar cmd/main.go
+
+----------------------------------------------
+
+* Criar camada Repository
+
+mkdir repository                                                                                                                                      git:main*
+touch repository/product_repository.go
+
+<Código em repository/product_repository.go>
+
+----------------------------------------------
+
+* Conectar as camadas
+
+- usecase/product_usecase
+- cmd/main.go [Inicializar repository]
+- controller/product_controller 
+- usecase/product_usecase
+
+-> Adicionar em db/conn.go em package
+_ "github.com/lib/pq"
+
+-> Executar no terminal
+go mod tidy
+
