@@ -1,4 +1,4 @@
-/* Pegando dados de uma consulta ao banco de dados */
+/* Enviando requisição POST */
 
 package main
 
