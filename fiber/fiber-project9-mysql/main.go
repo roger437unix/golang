@@ -1,4 +1,5 @@
 /* Gerando hash da senha do usuário */
+/* Registrando usuário no banco de dados */
 
 package main
 
